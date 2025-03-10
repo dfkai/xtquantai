@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Editor directories
+.cursor/
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*.bak2
+*.backup
+
+# Lock files
+uv.lock
+
+# Local configuration
+.env

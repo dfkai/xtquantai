@@ -176,5 +176,5 @@ xtquantai/
 
 ## 致谢
 
-- [讯投科技](https://www.thinktrader.net/) 提供的量化交易平台
+- [迅投科技](https://www.thinktrader.net/) 提供的量化交易平台
 - [Model Context Protocol](https://modelcontextprotocol.io/) 提供的 AI 集成框架

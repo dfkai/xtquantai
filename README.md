@@ -63,43 +63,34 @@ xtquantai
 npx @modelcontextprotocol/inspector uv run xtquantai
 ```
 
-### 与 Claude Desktop 集成
+### 与 Cursor 的集成
 
-在 Claude Desktop 中配置 MCP 服务器：
+#### Windows（QMT/投研端目前仅支持 Windows，需在 Windows 环境）
 
-#### Windows
-编辑 `%APPDATA%/Claude/claude_desktop_config.json` 文件：
+在 Cursor 中配置 MCP 服务器：
+
+方法一：
+
+在当前项目建立 `.cursor` 文件夹，在该文件夹下建立 `mcp.json` 文件，则 Cursor 编辑器会自动添加该 mcp 工具
 
 ```json
 {
   "mcpServers": {
     "xtquantai": {
-      "command": "uv",
+      "command": "cmd /c uvx",
       "args": [
-        "run",
-        "xtquantai"
+        "path:\\to\\xtquantai"
       ]
     }
   }
 }
 ```
 
-#### macOS
-编辑 `~/Library/Application Support/Claude/claude_desktop_config.json` 文件：
+> ⚠️ 注意：在 windows 中，命令务必加上 cmd /c，否则会导致命令窗口执行完立即关闭。
 
-```json
-{
-  "mcpServers": {
-    "xtquantai": {
-      "command": "uv",
-      "args": [
-        "run",
-        "xtquantai"
-      ]
-    }
-  }
-}
-```
+方法二：
+
+直接在 `设置-MCP-添加新的 MCP Server`，名字叫 `xtquantai`，命令(command)是：`cmd /c uvx path:\\to\\xtquantai`，调整为`Enabled`。
 
 ## 工具使用示例
 

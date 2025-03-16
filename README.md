@@ -1,13 +1,13 @@
 # xtquantai
 
-XTQuantAI 是一个基于 Model Context Protocol (MCP) 的服务器，它将迅投 (xtquant) 量化交易平台的功能与人工智能助手集成，使 AI 能够直接访问和操作量化交易数据和功能。
+xtquantai 是一个基于 Model Context Protocol (MCP) 的服务器，它将迅投 (xtquant) 量化交易平台的功能与人工智能助手集成，使 AI 能够直接访问和操作量化交易数据和功能。
 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 功能特点
 
-XTQuantAI 提供以下核心功能：
+XTQuantAI 提供以下核心功能(陆续更新中，欢迎大家提交新创意)：
 
 ### 基础数据查询
 - **获取交易日期** (`get_trading_dates`) - 获取指定市场的交易日期
@@ -25,43 +25,33 @@ XTQuantAI 提供以下核心功能：
 
 ## 安装
 
+⚠️ 注意
+1. QMT 生态系统目前仅支持 Windows，因此以下均在 Windows 环境实现
+2. Windows 环境目前在实现 MCP 过程中有不少细节，需要注意
+
 ### 前提条件
 - Python 3.11 或更高版本
-- 讯投 (XTQuant) 量化交易平台
+- 迅投 QMT 或投研终端
 - [uv](https://github.com/astral-sh/uv) 包管理工具 (推荐)
 
-### 使用 pip 安装
-```bash
-pip install xtquantai
-```
+### uv 的安装及注意事项
 
-### 使用 uv 安装
-```bash
-uv pip install xtquantai
-```
+uv 是后续用来启动包的工具，因此我们需要在开始安装一下，注意你需要在你要运行 xtquantai 的环境里面安装这个包，这是第一个可能出问题的地方，不确定就都安装一下。
 
-### 从源码安装
+```python
+pip install uv
+```
+第二个注意点，uv 是有缓存的，因此我才会有 `clear_cache_and_run.py` 的文件，你一旦中间有错误的运行，不删缓存就会一直不更新，记得运行一下删除。
+
+
+### 下载即可
 ```bash
 git clone https://github.com/dfkai/xtquantai.git
-cd xtquantai
-uv pip install -e .
 ```
+
+或者直接下载 压缩包。你可以下载到任意文件夹，只要最后能够找到 xtquantai 的具体地址即可，最好去文件夹里直接去复制地址。
 
 ## 使用方法
-
-### 直接启动服务器
-```bash
-# 使用 Python 直接运行
-python -m xtquantai
-
-# 或使用安装的命令行工具
-xtquantai
-```
-
-### 使用 MCP Inspector 进行调试
-```bash
-npx @modelcontextprotocol/inspector uv run xtquantai
-```
 
 ### 与 Cursor 的集成
 
@@ -90,7 +80,9 @@ npx @modelcontextprotocol/inspector uv run xtquantai
 
 方法二：
 
-直接在 `设置-MCP-添加新的 MCP Server`，名字叫 `xtquantai`，命令(command)是：`cmd /c uvx path:\\to\\xtquantai`，调整为`Enabled`。
+直接在 `设置-MCP-添加新的 MCP Server`，名字叫 `xtquantai`，命令(command)是：`cmd /c uvx path:\to\xtquantai`，调整为`Enabled`。
+
+这里注意 `path to` 意思是你自己本地的地址，同时注意你手动填写进去是单斜杠，仅仅在json文件中需要两个斜杠防止转义。
 
 ## 工具使用示例
 
@@ -119,6 +111,22 @@ result = create_chart_panel(
 ```
 
 ## 开发
+
+### 直接启动服务器
+```bash
+# 使用 Python 直接运行
+python -m xtquantai
+
+# 或使用安装的命令行工具
+xtquantai
+```
+
+### 使用 MCP Inspector 进行调试（仅在开发的的时候使用）
+
+需要安装 node 环境。
+```bash
+npx @modelcontextprotocol/inspector uv run xtquantai
+```
 
 ### 构建和发布
 

@@ -1,0 +1,23 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    properties:
+      mode:
+        type: string
+        default: direct
+        description: Launch mode, usually one of 'direct' or 'inspector'.
+      port:
+        type: number
+        default: 8000
+        description: Port for the xtquantai server (direct mode).
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => { return { command: 'python', args: ['main.py', '--mode', config.mode, '--port', '' + config.port] } }
+  exampleConfig:
+    mode: direct
+    port: 8000

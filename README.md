@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/dfkai-xtquantai-badge.png)](https://mseep.ai/app/dfkai-xtquantai)
+
 # xtquantai
 
 xtquantai 是一个基于 Model Context Protocol (MCP) 的服务器，它将迅投 (xtquant) 量化交易平台的功能与人工智能助手集成，使 AI 能够直接访问和操作量化交易数据和功能。

@@ -35,24 +35,37 @@ xtdata = None
 UIPanel = None
 
 try:
-    from xtquant import xtdata
-    print(f"成功导入xtquant模块，路径: {xtdata.__file__ if hasattr(xtdata, '__file__') else '未知'}")
-    
-    # 尝试导入UIPanel，如果不存在则创建一个模拟的UIPanel类
-    try:
-        from xtquant.xtdata import UIPanel
-        print("成功导入UIPanel类")
-    except ImportError as e:
-        print(f"警告: 无法导入UIPanel类: {str(e)}")
-        # 创建一个模拟的UIPanel类
-        class UIPanel:
-            def __init__(self, stock, period, figures=None):
-                self.stock = stock
-                self.period = period
-                self.figures = figures or []
-            
-            def __str__(self):
-                return f"UIPanel(stock={self.stock}, period={self.period}, figures={self.figures})"
+    # 如果配置了 xqshare 环境变量，使用 xqshare 远程后端
+    if os.environ.get("XQSHARE_REMOTE_HOST"):
+        from xqshare import connect, xtdata
+        connect()
+        print("使用 xqshare 远程后端")
+        # 尝试导入 UIPanel
+        try:
+            from xqshare import xtview
+            UIPanel = xtview.UIPanel
+            print("成功导入 UIPanel (from xqshare.xtview)")
+        except (ImportError, AttributeError):
+            print("警告: xqshare 中无 UIPanel，UI 面板功能不可用")
+    else:
+        from xtquant import xtdata
+        print(f"成功导入xtquant模块，路径: {xtdata.__file__ if hasattr(xtdata, '__file__') else '未知'}")
+
+        # 尝试导入UIPanel，如果不存在则创建一个模拟的UIPanel类
+        try:
+            from xtquant.xtdata import UIPanel
+            print("成功导入UIPanel类")
+        except ImportError as e:
+            print(f"警告: 无法导入UIPanel类: {str(e)}")
+            # 创建一个模拟的UIPanel类
+            class UIPanel:
+                def __init__(self, stock, period, figures=None):
+                    self.stock = stock
+                    self.period = period
+                    self.figures = figures or []
+
+                def __str__(self):
+                    return f"UIPanel(stock={self.stock}, period={self.period}, figures={self.figures})"
 except ImportError as e:
     print(f"警告: 无法导入xtquant模块: {str(e)}")
     print("Python搜索路径:")

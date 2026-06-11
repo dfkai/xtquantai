@@ -1,0 +1,6 @@
+{
+  "name": "xtquantai",
+  "version": "0.1.0",
+  "description": "迅投 QMT 量化交易 AI 技能集",
+  "skills": "./skills/"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "xtquantai",
+  "description": "迅投 QMT 量化交易 AI 技能集：因子回测、策略生成等",
+  "owner": {
+    "name": "dfkai"
+  },
+  "plugins": [
+    {
+      "name": "qmt-skills",
+      "source": "./",
+      "description": "迅投 QMT 量化交易 AI 技能集：因子回测脚本生成（后续将补充期货交易、实盘模板、信号推送等技能）"
+    }
+  ]
+}

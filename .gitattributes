@@ -1,0 +1,8 @@
+# 文档与配置统一 LF，避免 CI 文本检查因 CRLF 失败
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+
+# QMT 母版脚本在 Windows 编辑器中使用，保留 CRLF
+skills/**/scripts/*.py text eol=crlf

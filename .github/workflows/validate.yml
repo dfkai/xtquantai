@@ -28,7 +28,7 @@ jobs:
           set -e
           for dir in skills/*/; do
             name=$(basename "$dir")
-            grep -q "^name: $name$" "$dir/SKILL.md" || {
+            grep -Eq "^name: $name\r?$" "$dir/SKILL.md" || {
               echo "::error::$dir SKILL.md frontmatter name 与目录名不一致"
               exit 1
             }

@@ -2,6 +2,7 @@
 
 面向迅投 QMT / 投研终端的 **Agent Skills** 仓库：把量化策略开发的领域知识（因子回测、信号生成、实盘模板等）封装为标准 [SKILL.md](https://agentskills.io/specification) 技能，安装后可在 Claude Code、Cursor、Codex、Gemini CLI、Kimi Code 等 70+ AI 编程工具中直接使用。
 
+[![validate](https://github.com/dfkai/xtquantai/actions/workflows/validate.yml/badge.svg)](https://github.com/dfkai/xtquantai/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 > 本仓库曾是 xtquant 的 MCP 服务器实现，现已全面转型为 skill 仓库。旧 MCP 代码保留在 [`legacy-mcp`](https://github.com/dfkai/xtquantai/tree/legacy-mcp) 分支（tag `v0.1.0-mcp`），不再维护。
@@ -15,7 +16,16 @@
 | `qmt-live-strategy-template` | 🚧 规划中 | 目标持仓型实盘策略模板 |
 | `qmt-live-signal-feishu` | 🚧 规划中 | 信号生成 + 飞书推送 |
 
-欢迎提 issue / PR 补充新技能创意。
+## 参与社区
+
+这个项目靠社区需求驱动——你在 QMT 量化中遇到的重复劳动，都可能值得做成一个技能：
+
+- 💡 **想要新技能** → [提交技能需求](https://github.com/dfkai/xtquantai/issues/new?template=skill-request.yml)，一句话的想法也欢迎
+- 🐛 **技能出问题** → [反馈 Bug](https://github.com/dfkai/xtquantai/issues/new?template=bug-report.yml)
+- 💬 **使用咨询 / 量化思路交流** → [Discussions](https://github.com/dfkai/xtquantai/discussions)
+- 🔧 **自己动手** → 阅读 [贡献指南](CONTRIBUTING.md) 后提 PR
+
+所有技能在 CI 中自动按 [Agent Skills 标准](https://agentskills.io/specification) 校验。维护流程公开在 [维护手册](docs/maintenance-playbook.md)。
 
 ## 安装
 
@@ -93,9 +103,11 @@ xtquantai/
 │           └── daily-factors-backtest.py   # 回测母版脚本
 ├── .claude-plugin/
 │   └── marketplace.json          # Claude Code 插件市场清单
+├── .github/                      # issue/PR 模板与 CI 校验
 ├── kimi.plugin.json              # Kimi Code 插件清单
 ├── INSTALL.md                    # 给 agent 读的安装指令
-└── docs/                         # 调研与设计文档
+├── CONTRIBUTING.md               # 贡献指南
+└── docs/                         # 调研文档与维护手册
 ```
 
 ## 许可证

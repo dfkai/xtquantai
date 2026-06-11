@@ -1,0 +1,43 @@
+name: validate
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate all skills (agentskills spec)
+        run: |
+          set -e
+          for dir in skills/*/; do
+            echo "==> $dir"
+            npx -y skills-ref validate "$dir"
+          done
+
+      - name: Check skill name matches directory
+        run: |
+          set -e
+          for dir in skills/*/; do
+            name=$(basename "$dir")
+            grep -q "^name: $name$" "$dir/SKILL.md" || {
+              echo "::error::$dir SKILL.md frontmatter name 与目录名不一致"
+              exit 1
+            }
+          done
+
+      - name: Validate plugin manifests are valid JSON
+        run: |
+          jq empty .claude-plugin/marketplace.json
+          jq empty kimi.plugin.json
+
+      - name: Validate Claude plugin marketplace
+        run: npx -y @anthropic-ai/claude-code plugin validate .

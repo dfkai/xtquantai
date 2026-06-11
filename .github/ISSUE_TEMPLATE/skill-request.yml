@@ -1,0 +1,49 @@
+name: 💡 新技能需求
+description: 提出你希望增加的 QMT 量化技能（因子回测、交易模板、信号推送等）
+title: "[Skill 需求] "
+labels: ["skill-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提出需求！描述越具体，技能落地越快。不确定的项可以留空。
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 你想让 AI 帮你完成什么量化任务？
+      placeholder: 例如：根据研报复现一个分钟级动量因子，并在 QMT 中回测
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 技能类别
+      options:
+        - 因子回测（股票）
+        - 期货策略
+        - 实盘交易模板
+        - 信号生成与推送
+        - 数据获取与处理
+        - 其他（请在场景中说明）
+    validations:
+      required: true
+  - type: textarea
+    id: input-output
+    attributes:
+      label: 期望的输入与输出
+      description: 你会给 AI 什么材料（研报/公式/截图/口述），期望它产出什么？
+      placeholder: 输入：研报 PDF；输出：可直接在 QMT 策略编辑器运行的回测脚本
+  - type: textarea
+    id: reference
+    attributes:
+      label: 参考资料
+      description: 相关研报名称、公开链接、已有代码片段等（请勿上传有版权的完整研报原文）
+  - type: checkboxes
+    id: help
+    attributes:
+      label: 你愿意如何参与
+      options:
+        - label: 我可以提供测试反馈（在自己的 QMT 环境验证）
+        - label: 我可以提供示例数据或参数
+        - label: 我愿意自己写初稿提 PR

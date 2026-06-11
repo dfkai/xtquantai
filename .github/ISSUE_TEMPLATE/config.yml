@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 使用咨询与想法讨论
+    url: https://github.com/dfkai/xtquantai/discussions
+    about: 不是 bug 也不是明确需求？来 Discussions 聊聊用法、思路和量化交流

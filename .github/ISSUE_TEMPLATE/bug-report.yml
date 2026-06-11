@@ -1,0 +1,50 @@
+name: 🐛 技能问题反馈
+description: 某个技能生成的脚本报错、逻辑错误或行为不符合预期
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: 涉及的技能
+      options:
+        - qmt-inner-backtest
+        - 安装过程（README / INSTALL.md）
+        - 其他 / 不确定
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: 使用的 AI 工具
+      options:
+        - Claude Code
+        - Cursor
+        - OpenAI Codex CLI
+        - Kimi Code CLI
+        - Gemini CLI
+        - 其他（请在描述中说明）
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 问题描述
+      description: 发生了什么？期望的行为是什么？
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤 / 给 AI 的原始指令
+      placeholder: 你对 AI 说了什么、它生成了什么、QMT 中报了什么错（贴日志）
+  - type: input
+    id: qmt-version
+    attributes:
+      label: QMT / 投研终端版本
+      placeholder: 例如 投研版 vX.X
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 截图、生成的脚本片段、QMT 日志等

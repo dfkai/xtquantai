@@ -116,5 +116,4 @@ MIT — 详见 [LICENSE](LICENSE)。
 
 ## 致谢
 
-- [迅投科技](https://www.thinktrader.net/) 提供的量化交易平台
 - [Agent Skills](https://agentskills.io/) 开放技能标准
